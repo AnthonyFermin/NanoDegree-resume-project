@@ -1,22 +1,14 @@
-/*$("#main").append("Anthony Fermin");
 
-var awesomeThoughts = "I am Anthony and I am AWESOME!"
-var funThoughts = awesomeThoughts.replace("AWESOME!", "FUN!");
-console.log(awesomeThoughts);
-console.log(funThoughts);
-
-$("#main").append(funThoughts);*/
-
-var name = "Anthony Fermin"
+/*var name = "Anthony Fermin"
 var formattedName = HTMLheaderName.replace("%data%", name);
 
 var role = "Web Developer"
 var formattedRole = HTMLheaderRole.replace("%data%", role);
 
 $("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+$("#header").prepend(formattedName);*/
 
-var skills = ["awesomeness", "80 wpm", "JavaScript", "HTML", "CSS"];
+var skills = ["awesomeness", "80 WPM", "JavaScript", "HTML", "CSS"];
 
 var bio = {
 	"name" : "Anthony Fermin",
@@ -33,36 +25,71 @@ var bio = {
 	"bioPic" : "",
 };
 
-$("#main").append(bio.name);
-$("#main").append(bio.role);
-$("#main").append(bio.contactInfo.mobile);
-$("#main").append(bio.contactInfo.email);
-$("#main").append(bio.skills);
-
 var work = {
 	"employer" : "T-Mobile",
 	"jobPosition" : "Retail Sales Associate",
-	"years" : "1"
+	"years" : "1",
+	"city" : "corona, NY"
 }
- work.city = "corona, NY";
 
 
 var education = {
-	"school" : "LaGuardia Community College",
-	"major" : "Computer Science",
-	"degree" : "Associates",
-	"location" : "Long Island City, NY"
+	"schools" : [
+		{
+		"name" : "LaGuardia Community College",
+		"location" : "Long Island City, NY",
+		"major" : "Computer Science",
+		"degree" : "Associates",
+		"graduation" : 2015
+		}
+	],
+	"onlineCourses" : [
+		{
+		"title" : "Nanodegree: Front-end Web Developer",
+		"school" : "Udacity",
+		"URL" : "www.Udacity.com"
+		},
+		{
+		"title" : "Intro to JS: Drawing & Animation",
+		"school" : "Khan Academy",
+		"URL": "www.KhanAcademy.org"
+		},
+		{
+		"title" : "JQuery",
+		"school" : "Codecademy",
+		"URL" : "www.Codecademy.com"
+		},
+		{
+		"title" : "Make an Interactive Website",
+		"school" : "Codecademy",
+		"URL" : "www.Codecademy.com"
+		},
+		{
+		"title" : "Make a Website",
+		"school" : "Codecademy",
+		"URL" : "www.Codecademy.com"
+		},
+		{
+		"title" : "HTML & CSS",
+		"school" : "Codecademy",
+		"URL" : "www.Codecademy.com"
+		}
+	]
 }
-
-education["grade"] = "Sophomore";
-
-$("#main").append(work.employer);
-$("#main").append(work.jobPosition);
-$("#main").append(work.years);
-$("#main").append(work.city);
-
-$("#main").append(education["school"]);
-$("#main").append(education["major"]);
-$("#main").append(education["degree"]);
-$("#main").append(education["location"]);
-$("#main").append(education["grade"]);
+	
+var projects = {
+	"Udacity" : [
+		{
+			"name": "Project 1: Mockup to Website",
+			"URL" : "github link"
+		},
+		{
+			"name" : "Project 2: Interactive Resume",
+			"URL" : "https://github.com/AnthonyFermin/NanoDegree-resume-project"
+		}
+	],
+	"Codecademy" : {
+		"bootstrapProject" : "Dawn Website",
+		"URL" : "github link"
+	}
+}
