@@ -88,23 +88,49 @@ var education = {
 	]
 }
 	
-var projects = {
-	"Udacity" : [
+var projects ={
+	"project" : [
 		{
-			"name": "Project 1: Mockup to Website",
-			"URL" : "github link"
+			"title" : "Udacity Front-End Web Developer NanoDegree Project 2",
+			"dates" : "January 2015",
+			"description" : "Interactive Resume : Interactive Resume- https://github.com/AnthonyFermin/NanoDegree-resume-project",
+			"image" : ""
 		},
 		{
-			"name" : "Project 2: Interactive Resume",
-			"URL" : "https://github.com/AnthonyFermin/NanoDegree-resume-project"
+			"title": "Udacity Front-End Web Developer NanoDegree Project 1",
+			"dates" : "November 2014",
+			"description" : "Mockup to Website - I was given a JPG of a mockup website then I replicated it using HTML and CSS",
+			"image" : ""
+		},
+		{
+			"title" : "Codecademy HTML and CSS Bootstrap Project",
+			"dates" : "June 2014",
+			"description" : "Dawn Website using Bootstrap",
+			"image" : ""
 		}
-	],
-	"Codecademy" : {
-		"bootstrapProject" : "Dawn Website",
-		"URL" : "github link"
+	]
+}
+
+//------------------------ CODE SECTION ---------------------------
+
+projects.display = function(){
+	for(project in projects.project){
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle = HTMLprojectTitle.replace("%data%" , projects.project[project].title);
+		var formattedDate = HTMLprojectDates.replace("%data%" , projects.project[project].dates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%" , projects.project[project].description);
+		$('.project-entry:last').append(formattedTitle);
+		$('.project-entry:last').append(formattedDate);
+		$('.project-entry:last').append(formattedDescription);
+		
+		if(projects.project[project].image.length > 0){
+			var formattedImage = HTMLprojectImage.replace("%data%" , projects.project[project].image);
+			$('.project-entry:last').append(formattedImage);
+		}
 	}
 }
-//------------------------ CODE SECTION ---------------------------
+projects.display();
+
 
 if (bio.skills.length >  0){
 	$('#header').append(HTMLskillsStart);
@@ -129,3 +155,16 @@ var displayWork = function(){
 	}
 }
 displayWork();
+
+$('#main').append(internationalizeButton);
+var inName = function(oldName) {
+    var finalName = oldName.trim();
+
+    var spaceLoc = finalName.search(" ");
+    var firstName = finalName[0].toUpperCase() + finalName.slice(1,spaceLoc).toLowerCase();
+    var lastName = finalName.slice(spaceLoc).toUpperCase();
+    finalName = firstName + lastName;
+    
+
+    return finalName;
+};
