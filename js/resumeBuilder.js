@@ -10,7 +10,7 @@ var bio = {
 	},
 	"welcomeMessage" : "Welcome to my resume!",
 	"skills" : ["awesomeness", "80 WPM", "JavaScript", "HTML", "CSS"],
-	"bioPic" : "images/fry.jpg",
+	"bioPic" : "images/profilePicture.jpg",
 	"display" : function(){
 		var formattedName = HTMLheaderName.replace("%data%", bio.name);
 		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -56,14 +56,14 @@ var work = {
 		{
 		"employer" : "T-Mobile",
 		"title" : "Retail Sales Associate",
-		"dates" : "06/13 - 04/14",
+		"dates" : "June 2013 - April 2014",
 		"location" : "Corona, NY",
 		"description" : "Greeted customers and assisted them as soon as they entered the location, Diagnosed customer’s lifestyle necessities and recommended a complete product solution, Amiably assisted customers in resolving issues concerning their T-Mobile account and devices, Assisted customers in purchasing new devices via T-Mobile iPad during busy hours, Handled cash/credit transactions and opened/closed point of sale cash registers"
 		},
 		{
 		"employer" : "Best Buy",
 		"title" : "Wireless Sales Lead",
-		"dates" : "12/12 - 06/13",
+		"dates" : "December 12 - June 2013",
 		"location" : "Elmhurst, NY",
 		"description" : "Supervised and managed employee interaction with customers, Ensured sales floor is presentable and prices were updated, Handled inventory adjustments, received products and transferred products from other locations, Filled out daily management paperwork, Logged daily safe/ register totals and ordered change when needed, Was responsible for all tasks related to opening and closing the store"
 		}
@@ -99,7 +99,7 @@ var education = {
 		{
 		"title" : "Nanodegree: Front-end Web Developer",
 		"school" : "Udacity",
-		"dates" : "December 2014 to present",
+		"dates" : "December 2014 to Future",
 		"URL" : "https://www.udacity.com/course/nd001"
 		},
 		{
@@ -148,8 +148,8 @@ var education = {
 			
 		}
 		$('#education').append(HTMLonlineClasses)
-			var courseCount = 0;
-			for(counter in education.onlineCourses){
+			var courseCount = 0;       //made a counter for the horizontal rule
+			for(counter in education.onlineCourses){  //stores total number of objects in education.onlineCourses in courseCount
 				courseCount++;
 			}
 		for(course in education.onlineCourses){
@@ -161,9 +161,9 @@ var education = {
 			$(".education-entry:last").append(formattedTitleSchool);
 			$(".education-entry:last").append(formattedDates);
 			$(".education-entry:last").append(formattedURL);
-			if(courseCount > 1){
-				courseCount--;
-				$(".education-entry:last").append("<hr></hr>");
+			if(courseCount > 1){  //adds a horizontal rule in between each online course
+				courseCount--;   
+				$(".education-entry:last").append('<hr class="smallDivider"></hr>');
 			}
 		}
 	}
@@ -175,19 +175,22 @@ var projects ={
 			"title" : "Udacity Front-End Web Developer NanoDegree Project 2",
 			"dates" : "January 2015",
 			"description" : "Interactive Resume : Interactive Resume- https://github.com/AnthonyFermin/NanoDegree-resume-project",
-			"image" : ""
+			"image" : "images/udacityNanoDegreeProject2Pic1.jpg",
+			"image2" : "images/udacityNanoDegreeProject2Pic2.jpg"
 		},
 		{
 			"title": "Udacity Front-End Web Developer NanoDegree Project 1",
 			"dates" : "November 2014",
 			"description" : "Mockup to Website - I was given a JPG of a mockup website then I replicated it using HTML and CSS",
-			"image" : ""
+			"image" : "images/udacityNanoDegreeProject1.jpg",
+			"image2" : ""
 		},
 		{
 			"title" : "Codecademy HTML and CSS Bootstrap Project",
 			"dates" : "June 2014",
 			"description" : "Dawn: A Website using Bootstrap",
-			"image" : ""
+			"image" : "images/dawnPic1.jpg",
+			"image2" : "images/dawnPic2.jpg"
 		}
 	],
 	"display" : function(){
@@ -203,6 +206,10 @@ var projects ={
 			if(projects.project[project].image.length > 0){
 				var formattedImage = HTMLprojectImage.replace("%data%" , projects.project[project].image);
 				$('.project-entry:last').append(formattedImage);
+				if(projects.project[project].image2.length > 0){
+					var formattedImage = HTMLprojectImage.replace("%data%" , projects.project[project].image2);
+					$('.project-entry:last').append(formattedImage);
+				}
 			}
 		}
 	}
