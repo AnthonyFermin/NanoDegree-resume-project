@@ -23,17 +23,31 @@ var bio = {
 
 		if(bio.bioPic.length > 0){
 			var formattedBioPic = HTMLbioPic.replace("%data%" , bio.bioPic);
-			$("#header").prepend(formattedBioPic);
+			$("#header").append(formattedBioPic);
 		}
-
-		$("#header").prepend(formattedWelcomeMsg);
-		$("#header").prepend(formattedTwitter);
-		$("#header").prepend(formattedGithub);
-		$("#header").prepend(formattedLocation);
-		$("#header").prepend(formattedEmail);
-		$("#header").prepend(formattedMobile);
 		$("#header").prepend(formattedRole);
 		$("#header").prepend(formattedName);
+		$("#header").append(formattedWelcomeMsg);
+		$("#topContacts").prepend(formattedTwitter);
+		$("#topContacts").prepend(formattedGithub);
+		$("#topContacts").prepend(formattedLocation);
+		$("#topContacts").prepend(formattedEmail);
+		$("#topContacts").prepend(formattedMobile);
+
+		$("#footerContacts").prepend(formattedTwitter);
+		$("#footerContacts").prepend(formattedGithub);
+		$("#footerContacts").prepend(formattedLocation);
+		$("#footerContacts").prepend(formattedEmail);
+		$("#footerContacts").prepend(formattedMobile);
+
+		if (bio.skills.length >  0){
+			$('#header').append(HTMLskillsStart);
+
+			for(skill in bio.skills){
+				$('#skills').append(HTMLskills.replace( "%data%" , bio.skills[skill]));
+			}
+		}
+		
 	}
 };
 
@@ -78,41 +92,81 @@ var education = {
 		"location" : "Long Island City, NY",
 		"major" : "Computer Science",
 		"degree" : "Associates",
-		"graduation" : 2015
+		"dates" : "09/2013 - 06/2015"
 		}
 	],
 	"onlineCourses" : [
 		{
 		"title" : "Nanodegree: Front-end Web Developer",
 		"school" : "Udacity",
-		"URL" : "www.Udacity.com"
+		"dates" : "December 2014 to present",
+		"URL" : "https://www.udacity.com/course/nd001"
 		},
 		{
 		"title" : "Intro to JS: Drawing & Animation",
 		"school" : "Khan Academy",
-		"URL": "www.KhanAcademy.org"
+		"dates" : "August 2014",
+		"URL": "https://www.khanacademy.org/computing/computer-programming/programming"
 		},
 		{
 		"title" : "JQuery",
 		"school" : "Codecademy",
-		"URL" : "www.Codecademy.com"
+		"dates" : "July 2014",
+		"URL" : "http://www.codecademy.com/tracks/jquery"
 		},
 		{
 		"title" : "Make an Interactive Website",
 		"school" : "Codecademy",
-		"URL" : "www.Codecademy.com"
+		"dates" : "July 2014",
+		"URL" : "http://www.codecademy.com/skills/make-an-interactive-website"
 		},
 		{
 		"title" : "Make a Website",
 		"school" : "Codecademy",
-		"URL" : "www.Codecademy.com"
+		"dates" : "June 2014",
+		"URL" : "http://www.codecademy.com/skills/make-a-website"
 		},
 		{
 		"title" : "HTML & CSS",
 		"school" : "Codecademy",
-		"URL" : "www.Codecademy.com"
+		"dates" : "June 2014",
+		"URL" : "http://www.codecademy.com/tracks/web"
 		}
-	]
+	],
+	"display" : function(){
+		for(school in education.schools){
+			$("#education").append(HTMLschoolStart);
+			var formattedNameDegree = HTMLschoolName.replace("%data%", education.schools[school].name) + HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			var formattedDates = HTMLschoolDates.replace("%data%" , education.schools[school].dates);
+			var formattedLocation = HTMLschoolLocation.replace("%data%" , education.schools[school].location);
+			var formattedMajor = HTMLschoolMajor.replace("%data%" , education.schools[school].major);
+
+			$(".education-entry:last").append(formattedNameDegree);
+			$(".education-entry:last").append(formattedLocation);
+			$(".education-entry:last").append(formattedDates);
+			$(".education-entry:last").append(formattedMajor);
+			
+		}
+		$('#education').append(HTMLonlineClasses)
+			var courseCount = 0;
+			for(counter in education.onlineCourses){
+				courseCount++;
+			}
+		for(course in education.onlineCourses){
+			$('#education').append(HTMLschoolStart);
+			var formattedTitleSchool = HTMLonlineTitle.replace("%data%" , education.onlineCourses[course].title) + HTMLonlineSchool.replace("%data%" , education.onlineCourses[course].school);
+			var formattedDates = HTMLonlineDates.replace("%data%" , education.onlineCourses[course].dates);
+			var formattedURL = HTMLonlineURL.replace("%data%" , education.onlineCourses[course].URL);
+
+			$(".education-entry:last").append(formattedTitleSchool);
+			$(".education-entry:last").append(formattedDates);
+			$(".education-entry:last").append(formattedURL);
+			if(courseCount > 1){
+				courseCount--;
+				$(".education-entry:last").append("<hr></hr>");
+			}
+		}
+	}
 }
 
 var projects ={
@@ -161,27 +215,17 @@ var projects ={
 bio.display();
 work.display();
 projects.display();
-
-
-if (bio.skills.length >  0){
-	$('#header').append(HTMLskillsStart);
-
-	for(skill in bio.skills){
-		$('#skills').append(HTMLskills.replace( "%data%" , bio.skills[skill]));
-	}
-}
-
+education.display();
 
 
 $('#main').append(internationalizeButton);
-var inName = function(oldName) {
-    var finalName = oldName.trim();
-    var spaceLoc = finalName.search(" ");
-    var firstName = finalName[0].toUpperCase() + finalName.slice(1,spaceLoc).toLowerCase();
-    var lastName = finalName.slice(spaceLoc).toUpperCase();
-    finalName = firstName + lastName;
-  
-    return finalName;
+var inName = function(name) {
+    var name = name.trim().split(" ");
+    console.log(name);
+    name[1] = name[1].toUpperCase();
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+    return name[0] + " " + name[1];
 };
 
 $("#mapDiv").append(googleMap);

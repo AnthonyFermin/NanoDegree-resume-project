@@ -13,6 +13,16 @@
   padding-right: 5%;
 }
 
+.education-entry > hr {
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc;
+  width: 10%;
+  height: 5px;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
 h1 {
   font-size: 40px;
   color: #F5A623;
@@ -212,4 +222,8 @@ span {
   .biopic {
     display: block;
   }
+}
+
+#skills {
+  display: inline-block;
 }
